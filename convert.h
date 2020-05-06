@@ -1,6 +1,8 @@
 #include "math.h"
 
 char s[2];
+char test[4];
+
 static int operation[16];
 
 
@@ -9,6 +11,7 @@ int * getOpration(char word[20]){
     int regLock = 0;
     int srcLock = 0;
     int parseInt();
+
     int binaryConvert(int n, int l, int b);
     int intFromArray(int *A, int len);
     //for ADD
@@ -31,7 +34,8 @@ int * getOpration(char word[20]){
         if(word[i] == '\x2E' && word[i+1] == '\x4F'){
             i = 7;
             int intPrep[] = {word[i], word[i+1], word[i+2], word[i+3]};
-            binaryConvert(intFromArray(intPrep,4),0,16);
+            binaryConvert(intFromArray(intPrep,4),0,15);
+
 
             break;
         }
@@ -468,6 +472,7 @@ int parseInt () {
     }
     return number;
 }
+
 
 int intFromArray( int *A, int len){
     int res = 0;
