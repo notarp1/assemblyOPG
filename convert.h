@@ -1,4 +1,4 @@
-
+#include "math.h"
 
 char s[2];
 static int operation[16];
@@ -10,6 +10,7 @@ int * getOpration(char word[20]){
     int srcLock = 0;
     int parseInt();
     int binaryConvert(int n, int l, int b);
+    int intFromArray(int *A, int len);
     //for ADD
     int add = 0;
     //for LD/STR
@@ -24,6 +25,15 @@ int * getOpration(char word[20]){
 
         if (word[i] == '\x20' || word[i] == '\x2C') {
             continue;
+        }
+
+        //.Orig
+        if(word[i] == '\x2E' && word[i+1] == '\x2F' ){
+            i = 7;
+            int intPrep[] = {word[i], word[i+1], word[i+2], word[i+3]};
+            binaryConvert(intFromArray(intPrep,4),0,16);
+
+            break;
         }
 
         //ADD & AND
@@ -438,14 +448,18 @@ int * getOpration(char word[20]){
 
 }
 
-
+//https://stackoverflow.com/questions/5488377/converting-an-integer-to-binary-in-c
+//https://www.programmingsimplified.com/c/source-code/c-program-convert-decimal-to-binary
 int parseInt () {
     char c;
-    int f,digit,number=0;
+    int f;
+    int digit;
+    int number=0;
+
     for(f = 0; f < 2; f++)
     {
         c = s[f];
-        if(c>='0' && c<='9') //to confirm it's a digit
+        if(c>='0' && c<='9')
         {
             digit = c - '0';
             number = number*10 + digit;
@@ -454,6 +468,22 @@ int parseInt () {
     }
     return number;
 }
+
+int intFromArray( int *A, int len){
+    int res = 0;
+    int numb = 0;
+    int offset = '0';
+    for(int i = 0; i < len; i++){
+        numb = *(A+i) - offset;
+        if(i == len-1){
+            res = res + (numb );
+        }else {
+            res = res + (int)( numb * pow(10,(len - 1 - i)));
+        }
+    }
+   return res;
+}
+
 
 int binaryConvert(int n, int l, int b) {
     int k;

@@ -11,6 +11,7 @@ int main() {
    //https://stackoverflow.com/questions/21074084/check-text-file-length-in-c
     FILE *fOut = fopen("outputFile.txt", "w");
 
+
     int ch;
     char singleLine[20];
     int linePoint= 0;
@@ -22,15 +23,14 @@ int main() {
         } else{
             linePoint = 0;
             int *p = getOpration(singleLine);
-
-
+            
             for(int i = 0; i < 16; i++){
                 int out = *(p+i);
                 printf("%d",out);
                 fprintf(fOut, "%d", out);
             }
             fprintf(fOut, "\n");
-            printf("\n");
+            printf("Ny Linje");
         }
 
     }
