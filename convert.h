@@ -28,7 +28,7 @@ int * getOpration(char word[20]){
         }
 
         //.Orig
-        if(word[i] == '\x2E' && word[i+1] == '\x2F' ){
+        if(word[i] == '\x2E' && word[i+1] == '\x4F'){
             i = 7;
             int intPrep[] = {word[i], word[i+1], word[i+2], word[i+3]};
             binaryConvert(intFromArray(intPrep,4),0,16);

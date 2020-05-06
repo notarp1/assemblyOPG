@@ -30,7 +30,6 @@ int main() {
                 fprintf(fOut, "%d", out);
             }
             fprintf(fOut, "\n");
-            printf("Ny Linje");
         }
 
     }
