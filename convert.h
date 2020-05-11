@@ -1,6 +1,6 @@
 #include "math.h"
 #include "fileHandler.h"
-static int LC = 0;
+
 char s[2];
 char test[4];
 

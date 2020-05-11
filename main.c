@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "convert.h"
 #include "fileHandler.h"
-
+#include "sudoOpHandler.h"
 char word[20];
 
 int main() {
@@ -24,6 +24,10 @@ int main() {
             singleLine[linePoint] = ch;
             linePoint++;
         } else {
+            if(singleLine[0] == '.'){
+                handleSudoOp(singleLine);
+            }
+
             linePoint = 0;
             writeLine(getOpration(singleLine));
         }

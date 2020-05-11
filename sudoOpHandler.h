@@ -26,8 +26,8 @@ void FILL( char value[]){
     //Loade R6 ned i en værdi
     // loade værdien ned i R7 og gemme det i LC ( måske LC ) idk man
 
-    int reg = LC + 1;
-    char ld[] = {'L','D',' ','R','6',',','0','x',*(value),*(value + 1),*(value +1),*(value+ 1)};
+
+    char ld[] = {'L','D',' ','R','6',',',' ','x',*(value),*(value + 1),*(value +1),*(value+ 1)};
     //Første linje hentet.
     writeLine(getOpration(ld));
 
