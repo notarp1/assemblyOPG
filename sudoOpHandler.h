@@ -5,19 +5,24 @@
 #include "fileHandler.h"
 #include "convert.h"
 
-#define UNTITLED_SUDOOPHANDLER_H
-
-
 
 void handleSudoOp(char *input[]){
-
+    void FILL( char var[]);
     if(*(input + 1) == 'F'){
        char value[4];
-       FILL(value, input );
+       int i = 2;
+       while(1){
+           if(*(input+i) == 'x'){
+               value = {*(input+i+1),*(input+i+2),*(input+i+3),*(input+i+4) };
+               break;
+           }
+
+       }
+       FILL(value);
     }
 }
 
-void FILL(char value[], char line[]){
+void FILL( char value[]){
     //Loade R6 ned i en værdi
     // loade værdien ned i R7 og gemme det i LC ( måske LC ) idk man
 

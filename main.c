@@ -19,6 +19,7 @@ int main() {
     int linePoint = 0;
     while (ch != EOF) {
         ch = fgetc(f);
+
         if (ch != ';') {
             singleLine[linePoint] = ch;
             linePoint++;
@@ -26,7 +27,6 @@ int main() {
             linePoint = 0;
             writeLine(getOpration(singleLine));
         }
-
 //https://www.tutorialspoint.com/cprogramming/c_return_arrays_from_function.htm
 
     }

@@ -9,15 +9,16 @@
 
 
 
-void writeLine(const int *singleLine){
-    FILE *fOut = fopen("outputFile.txt", "w");
+
+void writeLine(const int *singleLine, char *fOut){
+
     if(fOut == NULL){
         printf("Ikke noget Output");
     }
 
     for(int i = 0; i < 16; i++){
         int out = *(singleLine+i);
-        printf("%d",out);
+
         fprintf(fOut, "%d", out);
     }
     fprintf(fOut, "\n");
