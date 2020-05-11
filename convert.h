@@ -14,7 +14,7 @@ int * getOpration(char word[20]){
     int regLock = 0;
     int srcLock = 0;
     int parseInt();
-    int intFromHexa(char A, int len );
+    int intFromHexa(char A[], int len );
     int binaryConvert(int n, int l, int b);
     int intFromArray(int *A, int len);
     //for ADD
@@ -26,6 +26,7 @@ int * getOpration(char word[20]){
     //for BR
     int br = 0;
     int temp = 1;
+    char intPrep[4];
 
 
 
@@ -38,9 +39,13 @@ int * getOpration(char word[20]){
         //.Orig
         if(word[i] == '\x2E' && word[i+1] == '\x4F'){
             i = 7;
-            char intPrep[] = {word[i], word[i+1], word[i+2], word[i+3]};
+            intPrep[0] = word[i];
+            intPrep[1] = word[i+1];
+            intPrep[2] = word[i+2];
+            intPrep[3] = word[i+3];
 
-           binaryConvert(intFromHexa(intPrep, 4), 0, 15) ;
+            int k = intFromHexa(intPrep, 4);
+           binaryConvert(k, 0, 15) ;
 
             break;
         }
@@ -537,14 +542,14 @@ int * binaryConvertReturn(int n, int l, int b) {
     return res;
 }
 
-int intFromHexa(char A, int len){
+int intFromHexa(char A[], int len){
     int intFromHexaDecimal(char in);
     double res = 0;
     int numb = 0;
 
 
     for(int i = 0; i < len; i++){
-        numb = intFromHexaDecimal((A+i));
+        numb = intFromHexaDecimal(A[i]);
         if(i == len-1){
             res = res + (numb );
         }else {

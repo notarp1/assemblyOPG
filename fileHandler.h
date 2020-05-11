@@ -21,6 +21,7 @@ void writeLine(const int *singleLine, FILE *fOut){
 
         fprintf(fOut, "%d", out);
     }
+
     fprintf(fOut, "\n");
     //fclose(fOut);
 }
