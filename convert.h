@@ -23,7 +23,7 @@ int * getOpration(char word[20]){
     int ldr = 0;
     //for BR
     int br = 0;
-    int temp = 0;
+    int temp = 1;
 
 
     for (int i = 0; word[i] != 0; i++) {

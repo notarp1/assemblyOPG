@@ -13,7 +13,12 @@ void handleSudoOp(char *input[]){
        int i = 2;
        while(1){
            if(*(input+i) == 'x'){
-               value = {*(input+i+1),*(input+i+2),*(input+i+3),*(input+i+4) };
+
+               value[0] = *(input+i+1);
+               value[1] = *(input+i+2);
+               value[2] = *(input+i+3);
+               value[3] = *(input+i+4);
+
                break;
            }
 

@@ -10,7 +10,7 @@
 
 
 
-void writeLine(const int *singleLine, char *fOut){
+void writeLine(const int *singleLine, FILE *fOut){
 
     if(fOut == NULL){
         printf("Ikke noget Output");
