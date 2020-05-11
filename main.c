@@ -27,15 +27,19 @@ int main() {
     while (ch != EOF) {
         ch = fgetc(f);
 
-        if (ch != ';') {
+        if(ch == '\n'){
+            char singleLine[20];
+        } else if (ch != ';') {
             singleLine[linePoint] = ch;
             linePoint++;
         } else if (singleLine[0] == '.') {
             linePoint = 0;
             handleSudoOp(singleLine, fOut);
+            char singleLine[20];
         } else {
             linePoint = 0;
             writeLine(getOpration(singleLine), fOut);
+            char singleLine[20];
         }
 
 //https://www.tutorialspoint.com/cprogramming/c_return_arrays_from_function.htm
