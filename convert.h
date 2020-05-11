@@ -14,7 +14,7 @@ int * getOpration(char word[20]){
     int regLock = 0;
     int srcLock = 0;
     int parseInt();
-    int intFromHexa(char *A, int len );
+    int intFromHexa(char A, int len );
     int binaryConvert(int n, int l, int b);
     int intFromArray(int *A, int len);
     //for ADD
@@ -28,6 +28,7 @@ int * getOpration(char word[20]){
     int temp = 1;
 
 
+
     for (int i = 0; word[i] != 0; i++) {
 
         if (word[i] == '\x20' || word[i] == '\x2C') {
@@ -37,9 +38,9 @@ int * getOpration(char word[20]){
         //.Orig
         if(word[i] == '\x2E' && word[i+1] == '\x4F'){
             i = 7;
-            int intPrep[] = {word[i], word[i+1], word[i+2], word[i+3]};
-            binaryConvert(intFromArray(intPrep,4),0,15);
+            char intPrep[] = {word[i], word[i+1], word[i+2], word[i+3]};
 
+           binaryConvert(intFromHexa(intPrep, 4), 0, 15) ;
 
             break;
         }
@@ -458,7 +459,7 @@ int * getOpration(char word[20]){
 
 
 
-}
+    }
 
 //https://stackoverflow.com/questions/5488377/converting-an-integer-to-binary-in-c
 //https://www.programmingsimplified.com/c/source-code/c-program-convert-decimal-to-binary
@@ -536,14 +537,14 @@ int * binaryConvertReturn(int n, int l, int b) {
     return res;
 }
 
-int intFromHexa(char *A, int len){
+int intFromHexa(char A, int len){
     int intFromHexaDecimal(char in);
     double res = 0;
     int numb = 0;
 
 
     for(int i = 0; i < len; i++){
-        numb = intFromHexaDecimal(*(A+i));
+        numb = intFromHexaDecimal((A+i));
         if(i == len-1){
             res = res + (numb );
         }else {
