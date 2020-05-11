@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include "convert.h"
 #include "fileHandler.h"
+#include "sudoOpHandler.h"
 
 char word[20];
+
 
 int main() {
     int re = remove("outputFile.txt");
@@ -24,13 +26,19 @@ int main() {
         if (ch != ';') {
             singleLine[linePoint] = ch;
             linePoint++;
+        } else if (singleLine[0] == 'x') {
+            handleSudoOp(singleLine, fOut);
         } else {
             linePoint = 0;
             writeLine(getOpration(singleLine), fOut);
         }
+
 //https://www.tutorialspoint.com/cprogramming/c_return_arrays_from_function.htm
 
     }
     fclose(f);
 
 }
+
+
+
