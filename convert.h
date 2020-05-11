@@ -54,7 +54,7 @@ int * getOpration(char word[20]){
         if( temp == 1){
 
             //ADD & AND
-            if (word[i] == '\x41') {
+            if (word[i] == '\x41' && word[i+3] == '\x20') {
                 add = 1;
 
                 if (word[i + 1] == '\x44') {   //ADD
@@ -76,9 +76,9 @@ int * getOpration(char word[20]){
             }
 
             //LD & LDR
-            if (word[i] == '\x4C') {
+            if (word[i] == '\x4C' && (word[i+2] == '\x20' || word[i+3] == '\x20' )) {
 
-                if (word[i + 2] == '\x52') { //LDR
+                if (word[i + 2] == '\x52' ) { //LDR
                     operation[0] = 0;
                     operation[1] = 1;
                     operation[2] = 1;
@@ -98,7 +98,7 @@ int * getOpration(char word[20]){
             }
 
             //ST
-            if (word[i] == '\x53') {
+            if (word[i] == '\x53' && word[i+2] == '\x20') {
                 operation[0] = 0;
                 operation[1] = 0;
                 operation[2] = 1;
@@ -109,7 +109,7 @@ int * getOpration(char word[20]){
             }
 
             //BR
-            if (word[i] == '\x42') {
+            if (word[i] == '\x42' && (word[i+2] == '\x20' ||word[i+3] == '\x20' ||word[i+4] == '\x20' ||word[i+5] == '\x20') ) {
                 operation[0] = 0;
                 operation[1] = 0;
                 operation[2] = 0;
@@ -121,7 +121,7 @@ int * getOpration(char word[20]){
             }
 
             //NOT
-            if (word[i] == '\x4E') {
+            if (word[i] == '\x4E' && word[i+3] == '\x20' ) {
                 operation[0] = 1;
                 operation[1] = 0;
                 operation[2] = 0;
