@@ -1,5 +1,6 @@
 #include "math.h"
-
+#include "fileHandler.h"
+static int LC = 0;
 char s[2];
 char test[4];
 
@@ -11,7 +12,7 @@ int * getOpration(char word[20]){
     int regLock = 0;
     int srcLock = 0;
     int parseInt();
-
+    int intFromHexa(char *A, int len );
     int binaryConvert(int n, int l, int b);
     int intFromArray(int *A, int len);
     //for ADD
@@ -507,3 +508,34 @@ int binaryConvert(int n, int l, int b) {
         l++;
     }
 }
+int intFromHexa(char *A, int len){
+    int intFromHexaDecimal(char in);
+    double res = 0;
+    int numb = 0;
+
+
+    for(int i = 0; i < len; i++){
+        numb = intFromHexaDecimal(*(A+i));
+        if(i == len-1){
+            res = res + (numb );
+        }else {
+            res = res + (int)( numb * pow(16,(len - 1 - i)));
+        }
+    }
+    return (int)res;
+}
+
+int intFromHexaDecimal(char in){
+
+    switch (in) {
+        case 'A': return 10;
+        case 'B': return 11;
+        case 'C': return 12;
+        case 'D': return 13;
+        case 'E': return 14;
+        case 'F': return 15;
+
+        default: return in - '0';
+    }
+}
+
