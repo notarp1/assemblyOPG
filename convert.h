@@ -515,6 +515,27 @@ int binaryConvert(int n, int l, int b) {
         l++;
     }
 }
+
+int * binaryConvertReturn(int n, int l, int b) {
+    int k;
+    int c;
+    int res [16];
+
+    for (c = b; c >= 0; c--) {
+
+        k = n >> c;
+
+        if (k & 1) {
+            res[l] = 1;
+        } else {
+            res[l] = 0;
+
+        }
+        l++;
+    }
+    return res;
+}
+
 int intFromHexa(char *A, int len){
     int intFromHexaDecimal(char in);
     double res = 0;

@@ -29,6 +29,11 @@ void handleSudoOp(char input[], FILE *fOut){
         }
         FILL(value, fOut);
     }
+
+    if(*(input + 1) == 'O'){
+         writeLine(getOpration(input), fOut);
+    }
+
 }
 
 void FILL( char value[], FILE *fOut){
