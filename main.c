@@ -4,7 +4,7 @@
 #include "convert.h"
 #include "fileHandler.h"
 #include "sudoOpHandler.h"
-
+#include "hashMap.h"
 
 char word[20];
 
