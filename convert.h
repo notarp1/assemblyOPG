@@ -1,5 +1,7 @@
 #include "math.h"
 #include "fileHandler.h"
+#ifndef UNTITLED_CONVERT_H
+#define UNTITLED_CONVERT_H
 
 char s[2];
 char test[4];
@@ -544,3 +546,4 @@ int intFromHexaDecimal(char in){
     }
 }
 
+#endif

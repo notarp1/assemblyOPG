@@ -5,13 +5,18 @@
 #include "fileHandler.h"
 #include "convert.h"
 
+#ifndef UNTITLED_SUDOOPHANDLER_H
+#define UNTITLED_SUDOOPHANDLER_H
+
 void handleSudoOp(char input[], FILE *fOut){
     void FILL( char value[], FILE *fOut);
     if(*(input + 1) == 'F'){
         char value[4];
         int i = 2;
         while(1){
+
             if(*(input+i) == 'x'){
+
 
                 value[0] = *(input+i+1);
                 value[1] = *(input+i+2);
@@ -20,7 +25,7 @@ void handleSudoOp(char input[], FILE *fOut){
 
                 break;
             }
-
+            i++;
         }
         FILL(value, fOut);
     }
@@ -39,3 +44,4 @@ void FILL( char value[], FILE *fOut){
     //Anden linje til print;
     writeLine(getOpration(st), fOut);
 }
+#endif
