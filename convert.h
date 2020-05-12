@@ -1,5 +1,6 @@
 #include "math.h"
 #include "fileHandler.h"
+#include "hashMap.h"
 #ifndef UNTITLED_CONVERT_H
 #define UNTITLED_CONVERT_H
 
@@ -27,13 +28,28 @@ int * getOpration(char word[20]){
     int br = 0;
     int temp = 1;
     char intPrep[4];
-
+    int isTag = 0;
+    int z = 0;
 
 
     for (int i = 0; word[i] != 0; i++) {
 
         if (word[i] == '\x20' || word[i] == '\x2C') {
             continue;
+        }
+
+        if(isTag){
+            int label[5];
+            while(word[i] != '\x20'){
+
+                label[z] = operation[i];
+
+                i++;
+                z++;
+            }
+            int h = getLock((char *) label);
+            int z = binaryConvert(h,8,15);
+            printf("%d", z);
         }
 
         //.Orig
@@ -117,6 +133,8 @@ int * getOpration(char word[20]){
                 i += 1;
                 br = 1;
                 ldst = 1;
+
+
                 continue;
             }
 
@@ -144,6 +162,7 @@ int * getOpration(char word[20]){
                     operation[4] = 1;
                     if (word[i + 1] == '\x70') {
                         operation[6] = 1;
+                        isTag = 1;
                         continue;
                     } else operation[6] = 0;
                     if (word[i + 1] == '\x7A') { //z
@@ -154,6 +173,7 @@ int * getOpration(char word[20]){
                     } else operation[6] = 0;
 
                     i = i + 2;
+                    isTag = 1;
                     continue;
                 } else operation[4] = 0;
 
@@ -164,12 +184,14 @@ int * getOpration(char word[20]){
                         operation[6] = 1;
                     } else operation[6] = 0;
                     i = i + 1;
+                    isTag = 1;
                     continue;
                 } else operation[5] = 0;
 
                 if (word[i] == '\x70') {
                     operation[6] = 1;
                 } else operation[6] = 0;
+                isTag = 1;
                 continue;
 
             }
