@@ -12,7 +12,7 @@ void handleLabelPassOne(char label[5],char line[], int pos, int len, int LC){
     //check if label exist, if i do not, insert key and data
     if(doKeyExist(label) != 1){
         insertKey(label);
-        insertLock(label, LC);
+        insertLock(label, LC+1);
     }
 
 
