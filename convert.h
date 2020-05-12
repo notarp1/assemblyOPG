@@ -50,6 +50,9 @@ int * getOpration(char word[20]){
             int h = getLock((char *) label);
             int z = binaryConvert(h,8,15);
             printf("%d", z);
+    
+
+
         }
 
         //.Orig
@@ -474,6 +477,8 @@ int * getOpration(char word[20]){
                     break;
 
                 }
+
+            }else{
 
             }
         }

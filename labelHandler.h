@@ -16,7 +16,7 @@ void handleLabelPassOne(char label[5],char line[], int pos, int len, int LC){
     }
 
 
-};
+}
 
 
 

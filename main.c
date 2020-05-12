@@ -9,7 +9,7 @@
 char word[20];
 
 
-
+int LC = 0;
 int main() {
     int re = remove("outputFile.txt");
 
@@ -27,21 +27,34 @@ int main() {
     while (ch != EOF) {
         ch = fgetc(f);
 
-        if(ch == '\n'){
+        if(ch == '\n') {
             char singleLine[20];
+
+
+
         } else if (ch != ';') {
             singleLine[linePoint] = ch;
             linePoint++;
+        }else if(singleLine[0] == '.' && singleLine[1]== 'E' && singleLine[2] == 'N' && singleLine[3] == 'D'){
+            if(getPass() == 1){
+                setPass(2);
+                LC = 0;
+                rewind(f);
+            }
+
         } else if (singleLine[0] == '.') {
+
             linePoint = 0;
             handleSudoOp(singleLine, fOut);
             char singleLine[20];
+
+
         } else {
             linePoint = 0;
             writeLine(getOpration(singleLine), fOut);
             char singleLine[20];
         }
-
+        LC++;
 //https://www.tutorialspoint.com/cprogramming/c_return_arrays_from_function.htm
 
     }
