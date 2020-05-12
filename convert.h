@@ -1,5 +1,6 @@
 #include "math.h"
 #include "fileHandler.h"
+#include "hashMap.h"
 #ifndef UNTITLED_CONVERT_H
 #define UNTITLED_CONVERT_H
 
@@ -27,13 +28,28 @@ int * getOpration(char word[20]){
     int br = 0;
     int temp = 1;
     char intPrep[4];
-
+    int isTag = 0;
+    int z = 0;
 
 
     for (int i = 0; word[i] != 0; i++) {
 
         if (word[i] == '\x20' || word[i] == '\x2C') {
             continue;
+        }
+
+        if(isTag){
+            int label[5];
+            while(word[i] != '\x20'){
+
+                label[z] = word[i];
+
+                i++;
+                z++;
+            }
+            int h = getLock((char *) label);
+            int z = binaryConvert(h,8,15);
+            printf("%d", z);
         }
 
         //.Orig
@@ -54,7 +70,7 @@ int * getOpration(char word[20]){
         if( temp == 1){
 
             //ADD & AND
-            if (word[i] == '\x41') {
+            if (word[i] == '\x41' && word[i+3] == '\x20') {
                 add = 1;
 
                 if (word[i + 1] == '\x44') {   //ADD
@@ -76,9 +92,9 @@ int * getOpration(char word[20]){
             }
 
             //LD & LDR
-            if (word[i] == '\x4C') {
+            if (word[i] == '\x4C' && (word[i+2] == '\x20' || word[i+3] == '\x20' )) {
 
-                if (word[i + 2] == '\x52') { //LDR
+                if (word[i + 2] == '\x52' ) { //LDR
                     operation[0] = 0;
                     operation[1] = 1;
                     operation[2] = 1;
@@ -98,7 +114,7 @@ int * getOpration(char word[20]){
             }
 
             //ST
-            if (word[i] == '\x53') {
+            if (word[i] == '\x53' && word[i+2] == '\x20') {
                 operation[0] = 0;
                 operation[1] = 0;
                 operation[2] = 1;
@@ -109,7 +125,7 @@ int * getOpration(char word[20]){
             }
 
             //BR
-            if (word[i] == '\x42') {
+            if (word[i] == '\x42' && (word[i+2] == '\x20' ||word[i+3] == '\x20' ||word[i+4] == '\x20' ||word[i+5] == '\x20') ) {
                 operation[0] = 0;
                 operation[1] = 0;
                 operation[2] = 0;
@@ -117,11 +133,13 @@ int * getOpration(char word[20]){
                 i += 1;
                 br = 1;
                 ldst = 1;
+
+
                 continue;
             }
 
             //NOT
-            if (word[i] == '\x4E') {
+            if (word[i] == '\x4E' && word[i+3] == '\x20' ) {
                 operation[0] = 1;
                 operation[1] = 0;
                 operation[2] = 0;
@@ -144,6 +162,7 @@ int * getOpration(char word[20]){
                     operation[4] = 1;
                     if (word[i + 1] == '\x70') {
                         operation[6] = 1;
+                        isTag = 1;
                         continue;
                     } else operation[6] = 0;
                     if (word[i + 1] == '\x7A') { //z
@@ -154,6 +173,7 @@ int * getOpration(char word[20]){
                     } else operation[6] = 0;
 
                     i = i + 2;
+                    isTag = 1;
                     continue;
                 } else operation[4] = 0;
 
@@ -164,12 +184,14 @@ int * getOpration(char word[20]){
                         operation[6] = 1;
                     } else operation[6] = 0;
                     i = i + 1;
+                    isTag = 1;
                     continue;
                 } else operation[5] = 0;
 
                 if (word[i] == '\x70') {
                     operation[6] = 1;
                 } else operation[6] = 0;
+                isTag = 1;
                 continue;
 
             }
