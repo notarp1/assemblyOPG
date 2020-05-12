@@ -42,7 +42,7 @@ int * getOpration(char word[20]){
             int label[5];
             while(word[i] != '\x20'){
 
-                label[z] = operation[i];
+                label[z] = word[i];
 
                 i++;
                 z++;
